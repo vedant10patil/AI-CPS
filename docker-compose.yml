@@ -1,0 +1,16 @@
+version: '3'
+services:
+  learningbase:
+    build: ./learningbase_stock_price_prediction
+    volumes:
+      - ai_system:/tmp
+    container_name: learningbasecontainer
+
+  activationbase:
+    build: ./activationbase_stock_price_prediction
+    volumes:
+      - ai_system:/tmp
+    container_name: activationbasecontainer
+
+volumes:
+  ai_system:
