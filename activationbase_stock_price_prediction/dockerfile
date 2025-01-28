@@ -1,0 +1,14 @@
+FROM busybox:latest
+
+# Set working directory inside the container
+WORKDIR /tmp/activationBase
+
+# Copy the CSV data file
+COPY activation_data.csv /tmp/activationBase/
+
+# Copy the README.md file
+COPY README.md /tmp/activationBase/README.md
+
+CMD ["sh"]
+
+CMD ["tail", "-f", "/dev/null"]
