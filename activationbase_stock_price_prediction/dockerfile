@@ -9,6 +9,5 @@ COPY activation_data.csv /tmp/activationBase/
 # Copy the README.md file
 COPY README.md /tmp/activationBase/README.md
 
-CMD ["sh"]
-
+# Keep the container running (this could be adjusted to run your specific app)
 CMD ["tail", "-f", "/dev/null"]
