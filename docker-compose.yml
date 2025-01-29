@@ -1,16 +1,23 @@
-version: '3'
+version: '3.9'
 services:
-  learningbase:
-    build: ./learningbase_stock_price_prediction
-    volumes:
-      - ai_system:/tmp
-    container_name: learningbasecontainer
-
   activationbase:
-    build: ./activationbase_stock_price_prediction
+    image: mishankjain111/ai-cps-activationbase:latest
+    container_name: activationbasecontainer
     volumes:
       - ai_system:/tmp
-    container_name: activationbasecontainer
+    ports:
+      - "8081:8080" # Adjust port mapping if necessary
+    command: tail -f /dev/null  # Keep the container running
+
+  learningbase:
+    image: mishankjain111/ai-cps-learningbase:latest
+    container_name: learningbasecontainer
+    volumes:
+      - ai_system:/tmp
+    ports:
+      - "8082:8080" # Adjust port mapping if necessary
+    command: tail -f /dev/null  # Keep the container running
 
 volumes:
   ai_system:
+    external: true
