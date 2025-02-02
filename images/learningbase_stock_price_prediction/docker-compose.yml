@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  learningbase:
+    image: mishankjain111/ai-cps-learningbase:latest
+    container_name: learningbasecontainer
+    volumes:
+      - ai_system:/tmp/learningbase  # External volume
+    ports:
+      - "8082:8080"
+    command: tail -f /dev/null
+
+volumes:
+  ai_system:
+    external: true  # External volume remains unchanged
