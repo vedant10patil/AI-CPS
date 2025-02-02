@@ -1,0 +1,16 @@
+FROM python:3.10-slim
+
+# Set working directory inside the container
+WORKDIR /tmp/learningBase
+
+# Upgrade pip and install required packages with increased timeout
+RUN pip install --upgrade pip \
+    && pip install --default-timeout=100 tensorflow pandas matplotlib scikit-learn
+
+# Copy data files and scripts into the container
+COPY train/training_data.csv /tmp/learningBase/train/
+COPY validation/test_data.csv /tmp/learningBase/validation/
+COPY model.py /tmp/learningBase/
+
+# Keep the container running
+CMD ["tail", "-f", "/dev/null"]
